@@ -2,6 +2,10 @@
 
 For running app
 
+**Instal all dependencies**
+
 `npm install -D`
 
-`npm start`# todo-app-react
+**And start the project**
+
+`npm start`
