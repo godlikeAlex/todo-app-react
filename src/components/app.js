@@ -17,10 +17,20 @@ class App extends Component {
 
     state = {
         todoData:[
-            {label:'Drink Coffee', important:false, id:1},
-            {label:'Create todo app', important:true, id:2},
-            {label:'Full learn react', important:true, id:3}
+            this.createTodoItem('Drink Coffee'),
+            this.createTodoItem('Create todo app'),
+            this.createTodoItem('Full learn react'),
+            this.createTodoItem('Download GTA V')
         ]
+    };
+
+    createTodoItem (label){
+        return {
+            label : label,
+            important : false,
+            done: false,
+            id: this.max++
+        };
     };
 
     deleteItem = (id)=>{
@@ -48,11 +58,7 @@ class App extends Component {
     };
 
     onItemAdded = (text) => {
-        const newItem = {
-            label : text,
-            important : false,
-            id: this.max++
-        };
+        const newItem = this.createTodoItem(text);
 
         this.setState(({todoData})=>{
            const newArray = [
