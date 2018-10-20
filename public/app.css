@@ -9,8 +9,20 @@ body{
 .header
 {
     font-weight: 700;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+
+.header__counters
+{
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+    text-transform: uppercase;
+    color: #0886fc;
+}
+
 input{
     border:none;
     border-bottom: 1px solid #0cbebe;
@@ -22,7 +34,7 @@ input{
 
 .btn
 {
-    background: #540aff;
+    background: #0886fc;
     text-align: center;
     border-radius: 2px;
     color: white;

@@ -2,30 +2,8 @@ import React from 'react';
 
 class TodoListItem extends React.Component{
 
-    state = {
-      done: false,
-      important : false
-    };
-
-    handlerImportant = ()=>{
-        this.setState(({important}) =>{
-            return {
-                important: !important
-            }
-        });
-    };
-
-    handlerReady = ()=>{
-        this.setState(({done}) =>{
-            return {
-                done: !done
-            }
-        });
-    };
-
     render(){
-        const {label,onDeleted, onDone,onImportant} = this.props;
-        const {done, important} = this.state;
+        const {label,onDeleted, onDone,onImportant, important, done} = this.props;
 
         return(
             <span>

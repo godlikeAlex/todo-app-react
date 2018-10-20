@@ -4,11 +4,12 @@ import './add-task-form.css';
 class AddTaskForm extends Component {
     render(){
         return(
-            <div className="add-task-form">
-                <div className="add-task-form__button" onClick={() => this.props.onItemAdded('Hello world')}>
+            <form className="add-task-form">
+                <input placeholder='Create a new task' />
+                <button className="add-task-form__button" onClick={() => this.props.onItemAdded('Hello world')}>
                     Add item
-                </div>
-            </div>
+                </button>
+            </form>
         )
     }
 }
