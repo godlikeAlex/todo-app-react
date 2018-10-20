@@ -5,7 +5,7 @@ class ItemStatusFilter extends Component {
         return(
             <div className='button-group'>
                 <div className="all btn">All</div>
-                <div className='active btn'>Active</div>
+                <div className='btn'>Active</div>
                 <div className="done btn">Done</div>
             </div>
         )

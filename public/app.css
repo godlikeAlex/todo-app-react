@@ -24,13 +24,17 @@ body{
 }
 
 input{
-    border:none;
-    border-bottom: 1px solid #0cbebe;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    float: left;
-    width: 50%;
+    border:1px solid #b1b1b1;
+    border-radius: 5px;
+    padding-left: 5px;
 }
+
+.search-panel
+{
+    display: flex;
+    justify-content: space-between;
+}
+
 
 .btn
 {
@@ -41,16 +45,18 @@ input{
     cursor: pointer;
     transition: .5s;
     font-weight: 700;
-    width: 25%;
+    width: 30.333%;
 }
+
 
 .btn:hover
 {
-    background: #673fff;
+    background: #007dfc;
 }
 
 .button-group
 {
+    width: 35%;
     display: flex;
     justify-content: space-around;
 }

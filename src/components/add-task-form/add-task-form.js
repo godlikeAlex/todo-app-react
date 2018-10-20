@@ -2,11 +2,28 @@ import React, { Component } from 'react';
 import './add-task-form.css';
 
 class AddTaskForm extends Component {
+
+    state = {
+        label : ''
+    };
+
+    onLabelChange = (e)=>{
+        this.setState({
+            label : e.target.value
+        });
+    };
+
+    submit = (e) =>{
+      e.preventDefault();
+        this.props.onItemAdded(this.state.label);
+    };
+
     render(){
         return(
-            <form className="add-task-form">
-                <input placeholder='Create a new task' />
-                <button className="add-task-form__button" onClick={() => this.props.onItemAdded('Hello world')}>
+            <form className="add-task-form" onSubmit={this.submit}>
+                <input onChange={this.onLabelChange}
+                    placeholder='Create a new task' />
+                <button className="add-task-form__button">
                     Add item
                 </button>
             </form>

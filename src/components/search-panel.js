@@ -3,7 +3,7 @@ import ItemStatusFilter from './item-status-filter';
 
 const SearchPanel = ()=>{
     return(
-        <div>
+        <div className='search-panel'>
             <input type='text' placeholder='Find the task' />
             <ItemStatusFilter />
         </div>
