@@ -24,6 +24,19 @@ class App extends Component {
         ]
     };
 
+    toggleProperty(arr,id, propName) {
+        const idx = arr.findIndex(el => el.id === id);
+
+        const oldItem = arr[idx];
+        const newItem = {...oldItem, [propName]: !oldItem[propName]};
+
+        return [
+            ...arr.slice(0,idx),
+            newItem,
+            ...arr.slice(idx+1)
+        ];
+    };
+
     createTodoItem (label){
         return {
             label : label,
@@ -50,11 +63,21 @@ class App extends Component {
     };
 
     onToggleDone = (id)=>{
-        console.log('Done',id);
+        this.setState(({ todoData })=>{
+            return {
+                todoData: this.toggleProperty(todoData,id,'done')
+            };
+        });
+
+        console.log(this.state.todoData);
     };
 
     onToggleImportant = (id)=>{
-        console.log('Important',id);
+        this.setState(({todoData})=>{
+            return {
+                todoData: this.toggleProperty(todoData,id,'important')
+            }
+        });
     };
 
     onItemAdded = (text) => {
@@ -73,12 +96,16 @@ class App extends Component {
     };
 
     render(){
+        const {todoData} = this.state;
+        const doneCount = todoData.filter(el=> el.done).length;
+        const todoCount = todoData.length - doneCount;
+
         return (
             <div className='wrapper'>
-                <Header/>
+                <Header todo={todoCount} done={doneCount} />
                 <SearchBar />
                 <TaskList
-                    todos={this.state.todoData}
+                    todos={todoData}
                     onDeleted = {this.deleteItem}
                     onDone = {this.onToggleDone}
                     onImportant = {this.onToggleImportant}
