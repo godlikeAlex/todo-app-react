@@ -16,13 +16,17 @@ class AddTaskForm extends Component {
     submit = (e) =>{
       e.preventDefault();
         this.props.onItemAdded(this.state.label);
+        this.setState({
+            label : ''
+        });
     };
 
     render(){
         return(
             <form className="add-task-form" onSubmit={this.submit}>
                 <input onChange={this.onLabelChange}
-                    placeholder='Create a new task' />
+                       placeholder='Create a new task'
+                       value={this.state.label}/>
                 <button className="add-task-form__button">
                     Add item
                 </button>
