@@ -21,7 +21,8 @@ class App extends Component {
             this.createTodoItem('Create todo app'),
             this.createTodoItem('Full learn react'),
             this.createTodoItem('Download GTA V')
-        ]
+        ],
+        term : ''
     };
 
     toggleProperty(arr,id, propName) {
@@ -35,6 +36,16 @@ class App extends Component {
             newItem,
             ...arr.slice(idx+1)
         ];
+    };
+
+    search (items,term){
+        if(this.state.term.length === 0){
+            return items;
+        }
+
+        return items.filter(item =>{
+            return item.label.toLowerCase().indexOf(term.toLowerCase()) > -1
+        })
     };
 
     createTodoItem (label){
@@ -80,6 +91,12 @@ class App extends Component {
         });
     };
 
+    searchTask = (label) =>{
+        this.setState({
+            term : label
+        })
+    };
+
     onItemAdded = (text) => {
         const newItem = this.createTodoItem(text);
 
@@ -96,16 +113,19 @@ class App extends Component {
     };
 
     render(){
-        const {todoData} = this.state;
+        const {todoData,term} = this.state;
+        const visibleItems = this.search(todoData,term);
         const doneCount = todoData.filter(el=> el.done).length;
         const todoCount = todoData.length - doneCount;
 
         return (
             <div className='wrapper'>
                 <Header todo={todoCount} done={doneCount} />
-                <SearchBar />
+                <SearchBar
+                    searchTask = {this.searchTask}
+                />
                 <TaskList
-                    todos={todoData}
+                    todos={visibleItems}
                     onDeleted = {this.deleteItem}
                     onDone = {this.onToggleDone}
                     onImportant = {this.onToggleImportant}
